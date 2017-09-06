@@ -1,0 +1,13 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteBase /AMLM/
+
+#RewriteCond %{REQUEST_FILENAME} !(smarty|scripts|style|dashboard|includes|libs|js|style|images|img)
+
+
+
+
+
+
+RewriteRule ^([a-zA-Z0-9-/]+)/?$ page-404.php
+

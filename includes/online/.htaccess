@@ -1,0 +1,96 @@
+Options +FollowSymLinks
+RewriteEngine On
+#RewriteBase /brainak/
+
+#RewriteCond %{REQUEST_FILENAME} !(smarty|scripts|style|dashboard|includes|libs|js|style|images|img)
+
+
+
+RewriteRule contact-us$ contact-us.php?seo_url=contact-us
+RewriteRule about-us$ about-us.php?seo_url=about-us
+
+
+RewriteRule mobile-application$ mobile-application.php?seo_url=mobile-application
+RewriteRule system-application$ system-application.php?seo_url=system-application
+RewriteRule website-development$ website-development.php?seo_url=website-development
+RewriteRule erp-softwares$ erp-softwares.php?seo_url=erp-softwares
+RewriteRule digital-marketing$ digital-marketing.php?seo_url=digital-marketing
+RewriteRule corporate-training$ corporate-training.php?seo_url=corporate-training
+
+
+RewriteRule product-we-have$ our-product.php
+RewriteRule site-map$ site-map.php
+
+
+#RewriteRule core-java$ program-training.php?seo_url=core-java
+#RewriteRule advance-java$ program-training.php?seo_url=advance-java
+#RewriteRule android$ program-training.php?seo_url=android
+#RewriteRule ios$ program-training.php?seo_url=ios
+#RewriteRule phone-gap$ program-training.php?seo_url=phone-gap
+#RewriteRule integrated-courses$ program-training.php?seo_url=integrated-courses
+#RewriteRule graphic-design$ program-training.php?seo_url=graphic-design
+#RewriteRule web-designing$ program-training.php?seo_url=web-designing
+#RewriteRule web-development$ program-training.php?seo_url=web-development
+#RewriteRule database$ program-training.php?seo_url=database
+#RewriteRule gaming$ program-training.php?seo_url=gaming
+#RewriteRule animation$ program-training.php?seo_url=animation
+
+
+RewriteRule android-app$ technologies.php?seo_url=android-app
+RewriteRule windows-app$ technologies.php?seo_url=windows-app
+RewriteRule opensource$ technologies.php?seo_url=opensource
+RewriteRule wordpress$ technologies.php?seo_url=wordpress
+RewriteRule smarty$ technologies.php?seo_url=smarty
+RewriteRule seo$ technologies.php?seo_url=seo
+RewriteRule hybrid$ technologies.php?seo_url=hybrid
+RewriteRule phone-gap$ technologies.php?seo_url=phone-gap
+RewriteRule responsive$ technologies.php?seo_url=responsive
+RewriteRule materialdesign$ technologies.php?seo_url=materialdesign
+RewriteRule mysql$ technologies.php?seo_url=mysql
+
+
+RewriteRule emerging-technologies$ emerging-technologies.php?seo_url=emerging-technologies
+RewriteRule phone-gap-cordova$ emerging-technologies.php?seo_url=phone-gap-cordova
+RewriteRule stylesheet$ emerging-technologies.php?seo_url=stylesheet
+
+RewriteRule internet-of-things$ internet-of-things.php?seo_url=internet-of-things
+
+
+
+
+RewriteRule internship$ events.php?seo_url=internship
+RewriteRule inplant-visit$ events.php?seo_url=inplant-visit
+RewriteRule seminars$ events.php?seo_url=seminar-arrangement
+RewriteRule workshop$ events.php?seo_url=workshop
+
+
+RewriteRule ^([a-zA-Z0-9-/]+)/?$ page-404.php
+
+
+
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript
+
+## EXPIRES CACHING ##
+
+ExpiresActive On
+ExpiresByType image/jpg "access 1 year"
+ExpiresByType image/jpeg "access 1 year"
+ExpiresByType image/gif "access 1 year"
+ExpiresByType image/png "access 1 year"
+ExpiresByType text/css "access 1 month"
+ExpiresByType application/pdf "access 1 month"
+ExpiresByType text/x-javascript "access 1 month"
+ExpiresByType application/x-shockwave-flash "access 1 month"
+ExpiresByType image/x-icon "access 1 year"
+ExpiresDefault "access 2 days"
+
+
+

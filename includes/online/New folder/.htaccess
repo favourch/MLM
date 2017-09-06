@@ -1,0 +1,44 @@
+Options +FollowSymLinks
+RewriteEngine On
+#RewriteBase /brainak/
+
+#RewriteCond %{REQUEST_FILENAME} !(smarty|scripts|style|dashboard|includes|libs|js|style|images|img)
+
+RewriteRule ^player/([-a-zA-Z0-9]+)$ player-profile.php?seo_url=$1
+RewriteRule contact-us$ contact-us.php
+RewriteRule about-us$ about-us.php
+RewriteRule mobile-application$ mobile-application.php
+RewriteRule system-application$ system-application.php
+
+
+RewriteRule product-we-have$ our-product.php
+
+RewriteRule core-java$ program-training.php?seo_url=core-java
+RewriteRule advance-java$ program-training.php?seo_url=advance-java
+RewriteRule android$ program-training.php?seo_url=android
+RewriteRule ios$ program-training.php?seo_url=ios
+RewriteRule phone-gap$ program-training.php?seo_url=phone-gap
+RewriteRule integrated-courses$ program-training.php?seo_url=integrated-courses
+RewriteRule graphic-design$ program-training.php?seo_url=graphic-design
+RewriteRule web-designing$ program-training.php?seo_url=web-designing
+RewriteRule web-development$ program-training.php?seo_url=web-development
+RewriteRule database$ program-training.php?seo_url=database
+RewriteRule gaming$ program-training.php?seo_url=gaming
+RewriteRule animation$ program-training.php?seo_url=animation
+
+RewriteRule internship$ events.php?seo_url=internship
+RewriteRule inplant-vist$ events.php?seo_url=inplant-vist
+RewriteRule seminars$ events.php?seo_url=seminar-arrangement
+RewriteRule workshop/1day$ events.php?seo_url=1day
+RewriteRule workshop/2days$ events.php?seo_url=2days
+RewriteRule workshop/morethan-2days$ events.php?seo_url=morethan-2days
+
+
+
+#RewriteRule ^services/([-a-zA-Z0-9]+)$ services-pages.php?seo_url=$1
+#RewriteRule ^team/([-a-zA-Z0-9]+)$ team-profile.php?seo_url=$1
+#RewriteRule ^other/([-a-zA-Z0-9]+)$ others-profile.php?seo_url=$1
+#RewriteRule ^tropies/([-a-zA-Z0-9]+)$ trophy-individual-page.php?seo_url=$1
+
+
+
