@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2017-09-05 11:08:03
+<?php /* Smarty version Smarty-3.1.16, created on 2017-09-06 14:56:02
          compiled from "\xampp\htdocs\MLM\\views\templates\admin\admin_profile_info.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1990159ae66da227046-90500575%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c3e188adcf028b9eeb5b7c2129f4b55f2e3cf8e8' => 
     array (
       0 => '\\xampp\\htdocs\\MLM\\\\views\\templates\\admin\\admin_profile_info.tpl',
-      1 => 1504602481,
+      1 => 1504702557,
       2 => 'file',
     ),
   ),
@@ -68,7 +68,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                            </div>
                             <div class="form-group  col-md-4">
                                 <label for="exampleInputEmail1">Contact Number</label>
-                                <input type="tel" class="form-control" name="contact_number"  id="contact_number" value="<?php echo $_smarty_tpl->tpl_vars['GetDetails_Qry']->value['contact_number'];?>
+                                <input type="tel" class="form-control" name="phone"  id="phone" value="<?php echo $_smarty_tpl->tpl_vars['GetDetails_Qry']->value['phone'];?>
 ">
                            </div>
 

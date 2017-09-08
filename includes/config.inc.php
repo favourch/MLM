@@ -14,12 +14,12 @@ define('DIR_IMAGES',     			'images/');
 
 //BASEDIR variable used to include and require files.
 //define('BASEDIR',                   getcwd() . DIRECTORY_SEPARATOR);
-define('BASEDIR',                   '/xampp/htdocs/MLM_new/'. DIRECTORY_SEPARATOR);
+define('BASEDIR',                   '/xampp/htdocs/MLM/'. DIRECTORY_SEPARATOR);
 define('CUR',                   'INR ');
 
 #========= Website Root & HTTP Paths ============#
-define("ROOT_PATH", "/xampp/htdocs/MLM_new/");
-define("HTTP_PATH", "http://localhost/MLM_new/");
+define("ROOT_PATH", "/xampp/htdocs/MLM/");
+define("HTTP_PATH", "http://localhost/MLM/");
 #========= Website Root & HTTP Paths ============#
 
 define('DIR_PLUGINS',               BASEDIR . 'libs' . DIRECTORY_SEPARATOR);

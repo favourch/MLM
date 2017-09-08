@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2017-09-05 12:41:45
+<?php /* Smarty version Smarty-3.1.16, created on 2017-09-08 08:19:34
          compiled from "\xampp\htdocs\MLM\\views\templates\admin\downline_user.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:885959aa7847e166a8-35258765%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'becba898d99dff2b2740d9772781fe1269f74e04' => 
     array (
       0 => '\\xampp\\htdocs\\MLM\\\\views\\templates\\admin\\downline_user.tpl',
-      1 => 1504607151,
+      1 => 1504794219,
       2 => 'file',
     ),
   ),
@@ -72,7 +72,6 @@ $_smarty_tpl->tpl_vars['content_item']->_loop = true;
 </td>
                             <td><?php echo $_smarty_tpl->tpl_vars['content_item']->value['DESIRED_USERNAME'];?>
 </td>
-                        
                             <td><?php echo $_smarty_tpl->tpl_vars['content_item']->value['SPONSER'];?>
 </td>
                             <td><?php echo $_smarty_tpl->tpl_vars['content_item']->value['PLACEMENT'];?>

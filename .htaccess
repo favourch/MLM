@@ -1,6 +1,6 @@
 Options +FollowSymLinks
 RewriteEngine On
-RewriteBase /AMLM/
+RewriteBase /MLM/
 
 #RewriteCond %{REQUEST_FILENAME} !(smarty|scripts|style|dashboard|includes|libs|js|style|images|img)
 
@@ -8,6 +8,42 @@ RewriteBase /AMLM/
 
 
 
+RewriteRule dashboard$ user/index.php
+#RewriteRule home$ user/index.php
+#RewriteRule index$ user/index.php
+RewriteRule account_info$ user/account_info.php
+RewriteRule profile_info$ user/profile_info.php
+RewriteRule change_password$ user/change_password.php
+RewriteRule bitcoin_addresss$ user/bitcoin_addresss.php
+RewriteRule make_deposit$ user/make_deposit.php
+RewriteRule make_payment$ user/make_payment.php
+RewriteRule direct_referral_user$ user/direct_referral_user.php
+RewriteRule downline_user$ user/downline_user.php
+RewriteRule sponsor_bonus$ user/sponsor_bonus.php
+RewriteRule binary_bonus$ user/binary_bonus.php
+RewriteRule daily_profits$ user/daily_profits.php
+RewriteRule direct_sponsor$ user/direct_sponsor.php
+RewriteRule binary_tree$ user/binary_tree.php
+RewriteRule withdrawal$ user/withdrawal.php
+RewriteRule withdrawal_history$ user/withdrawal_history.php
+RewriteRule logout$ user/logout.php
+
+#RewriteRule admin_dashboard$ office/index.php
+RewriteRule admin_profile_info$ office/admin_profile_info.php
+RewriteRule admin_change_password$ office/admin_change_password.php
+RewriteRule package$ office/package.php?seo_url=package
+RewriteRule user_registration$ office/user_registration.php
+RewriteRule admin_direct_referal$ office/admin_direct_referal.php
+RewriteRule roi_setting$ office/roi_setting.php
+RewriteRule admin_binary_match$ office/admin_binary_match.php
+RewriteRule admin_roi_report$ office/admin_roi_report.php
+RewriteRule admin_bonus_report$ office/admin_bonus_report.php
+
+RewriteRule add_package$ office/add_package.php?seo_url=add_package
+
+
+
 
 RewriteRule ^([a-zA-Z0-9-/]+)/?$ page-404.php
+RewriteRule corporate-training$ corporate-training.php?seo_url=corporate-training
 

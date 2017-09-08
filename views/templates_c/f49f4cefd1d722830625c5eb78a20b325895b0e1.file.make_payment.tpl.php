@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2017-09-02 11:07:01
+<?php /* Smarty version Smarty-3.1.16, created on 2017-09-06 08:37:36
          compiled from "\xampp\htdocs\MLM\\views\templates\admin\make_payment.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1427659aa74b5088184-41598229%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'f49f4cefd1d722830625c5eb78a20b325895b0e1' => 
     array (
       0 => '\\xampp\\htdocs\\MLM\\\\views\\templates\\admin\\make_payment.tpl',
-      1 => 1504330369,
+      1 => 1504607140,
       2 => 'file',
     ),
   ),
@@ -15,14 +15,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.16',
+  'unifunc' => 'content_59aa74b50b8b99_82284836',
   'variables' => 
   array (
     'plan_rslt' => 0,
     'MinPay' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.16',
-  'unifunc' => 'content_59aa74b50b8b99_82284836',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_59aa74b50b8b99_82284836')) {function content_59aa74b50b8b99_82284836($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("admin/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
@@ -66,7 +66,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                                 <input type="number" step="0.01" required="" id="amount" name="amount" class="form-control" value="<?php echo $_smarty_tpl->tpl_vars['MinPay']->value;?>
 " style="text-align:right">
                            </div>
-                           <!--center> <button type="submit" value="Pay With Bitcoin" name="PayWithBitcoin" class="btn btn-info" style="margin-top:20px">Pay With Bitcoin</button></center-->
+                           <center> <button type="submit" id = "PayWithBitcoin" value="Pay_With_Bitcoin" name="PayWithBitcoin" class="btn btn-info" style="margin-top:20px">Pay With Bitcoin</button></center >
                            <a href="pay-per-membership.php">Deposit</a>
                            </form>
                           </div>

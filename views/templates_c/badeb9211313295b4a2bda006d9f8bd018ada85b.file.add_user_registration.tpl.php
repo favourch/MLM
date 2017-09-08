@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2017-09-04 20:37:17
+<?php /* Smarty version Smarty-3.1.16, created on 2017-09-07 09:26:13
          compiled from "\xampp\htdocs\MLM\\views\templates\admin\add_user_registration.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2050559ad7b1d601803-72586247%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'badeb9211313295b4a2bda006d9f8bd018ada85b' => 
     array (
       0 => '\\xampp\\htdocs\\MLM\\\\views\\templates\\admin\\add_user_registration.tpl',
-      1 => 1504550230,
+      1 => 1504769171,
       2 => 'file',
     ),
   ),
@@ -25,6 +25,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'GENDER' => 0,
     'NATIONALITY' => 0,
     'GetDetails_Qry' => 0,
+    'BLOCKSTATUS' => 0,
+    'Block_status' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -144,11 +146,22 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                                 <input type="text" class="form-control" name="postalcode" id="postalcode"   value="<?php echo $_smarty_tpl->tpl_vars['GetUser_Qry']->value['postal_code'];?>
 ">
                            </div>
+                           
                             <div class="form-group  col-md-4">
-                                <label for="exampleInputEmail1">Required Placement</label>
+                                <label for="exampleInputEmail1">Required Placement </label>
                                 <input type="text" class="form-control" name="required_placement" id="required_placement"   value="<?php echo $_smarty_tpl->tpl_vars['GetUser_Qry']->value['required_placement'];?>
 ">
                            </div>
+                           
+                           <div class="form-group  col-md-4">
+                                <label for="exampleInputEmail1">User Block Status </label>
+                                <select class="form-control" name="blockstatus" required="required">
+                                    <?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['Block_status']->value;?>
+<?php $_tmp3=ob_get_clean();?><?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['BLOCKSTATUS']->value,'selected'=>$_tmp3),$_smarty_tpl);?>
+
+                                 </select>
+                           </div>
+                           
                           <div class="clearfix"></div>
                       		<div class="col-md-4">
                                 <button type="submit" name="submit_user" value="Submit" class="btn btn-primary">Save Data</button>

@@ -4,7 +4,7 @@ $page = "index";
 ?>
 
 <script>
-window.location = "<?php echo HTTP_PATH.'admin/login.php'?>";
+window.location = "<?php echo HTTP_PATH.'user/login.php'?>";
 </script>
 <?php
 

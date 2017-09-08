@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 06, 2017 at 07:48 AM
--- Server version: 10.1.22-MariaDB
+-- Generation Time: Sep 06, 2017 at 05:21 PM
+-- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -43,7 +43,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `email`, `currentlogin`, `lastlogin`, `website_name`, `website_url`, `phone`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'brainakinfo@gmail.com', 1504201753, 1504201739, 'MLM', '', '+91-8870561064');
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'MLM@gmail.com', 1504201753, 1504710083, 'MLM', '', '9597465896');
 
 -- --------------------------------------------------------
 
@@ -192,7 +192,7 @@ CREATE TABLE `otp` (
 --
 
 INSERT INTO `otp` (`id`, `user_id`, `otp`, `added_date`) VALUES
-(1, 62, 12041, 1504623504);
+(30, 1, 26531, 1504710908);
 
 -- --------------------------------------------------------
 
@@ -214,37 +214,10 @@ CREATE TABLE `parent_child_linkage` (
 --
 
 INSERT INTO `parent_child_linkage` (`ID`, `PARENT_ID`, `CHILD_ID`, `USER_ID`, `LEG`, `sponser_id`) VALUES
-(1526, 1, 10, 1, 'RIGHT', 1),
-(1527, 1, 39, 1, 'LEFT', 1),
-(1528, 10, 26, 1, 'RIGHT', 10),
-(1529, 39, 13, 1, 'LEFT', 39);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `payment_details`
---
-
-CREATE TABLE `payment_details` (
-  `paymentID` int(11) UNSIGNED NOT NULL,
-  `boxID` int(11) UNSIGNED NOT NULL DEFAULT '0',
-  `boxType` enum('paymentbox','captchabox') NOT NULL,
-  `orderID` varchar(50) NOT NULL DEFAULT '',
-  `userID` varchar(50) NOT NULL DEFAULT '',
-  `countryID` varchar(3) NOT NULL DEFAULT '',
-  `coinLabel` varchar(6) NOT NULL DEFAULT '',
-  `amount` double(20,8) NOT NULL DEFAULT '0.00000000',
-  `amountUSD` double(20,8) NOT NULL DEFAULT '0.00000000',
-  `unrecognised` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
-  `addr` varchar(34) NOT NULL DEFAULT '',
-  `txID` char(64) NOT NULL DEFAULT '',
-  `txDate` datetime DEFAULT NULL,
-  `txConfirmed` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
-  `txCheckDate` datetime DEFAULT NULL,
-  `processed` tinyint(1) UNSIGNED NOT NULL DEFAULT '0',
-  `processedDate` datetime DEFAULT NULL,
-  `recordCreated` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+(1570, 1, 10, 1, 'RIGHT', 1),
+(1571, 1, 39, 1, 'LEFT', 1),
+(1572, 10, 26, 1, 'RIGHT', 10),
+(1573, 39, 13, 1, 'LEFT', 39);
 
 -- --------------------------------------------------------
 
@@ -309,7 +282,7 @@ CREATE TABLE `profile_info` (
 --
 
 INSERT INTO `profile_info` (`id`, `user_id`, `fname`, `gender`, `dob`, `passport`, `phone`, `email`, `nationality`, `address`, `street`, `city`, `postal_code`, `required_placement`, `added_date`, `plan_id`, `Total_Amount`, `deposit_amount`, `left_deposit_amount`, `right_deposit_amount`, `deposit_date`, `account_status`, `total_profit`, `days_of_profit`) VALUES
-(1, 1, 'ram', 'Male', '', '', '', 'ram@gmail.com', 'INDIA', '', '', '', 0, 'RIGHT', 1504205948, 1, '0.0000', '0.050', '9.90000', '4.00000', 1504610119, 1, '0', ''),
+(1, 1, 'ram', 'Male', '', '', '', 'ram@gmail.com', 'INDIA', '', '', 'coimbatore', 0, 'LEFT', 1504679537, 1, '9.3998', '0.050', '9.90000', '4.00000', 1504575524, 1, '0', ''),
 (2, 2, 'rajesh', '', '', '', '', 'rames@gmail.cads', '', '', '', '', 0, 'LEFT', 1504211874, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 1, '0', ''),
 (3, 3, 'ranjith', '', '', '', '', 'ranjith@gmail.com', '', '', '', '', 0, 'LEFT', 1504218271, 3, '12.5000', '20.000', '0.00000', '0.00000', 1504223721, 1, '0', ''),
 (4, 4, 'aravind', '', '', '', '', 'aravind@gmail.com', '', '', '', '', 0, 'LEFT', 1504218340, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 1, '0', ''),
@@ -325,17 +298,32 @@ INSERT INTO `profile_info` (`id`, `user_id`, `fname`, `gender`, `dob`, `passport
 (38, 38, 'fads', '', '', '', '', 'ww@gmial.omc', '', '', '', '', 0, 'LEFT', 1504272805, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 1, '0', ''),
 (39, 39, 'vicky', '', '', '', '', 'vic@gmail.com', '', '', '', '', 0, 'LEFT', 1504274070, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 1, '0', ''),
 (40, 40, 'arunkumar', '', '', '', '', 'aarun312@gmail.com', '', '', '', '', 0, 'LEFT', 1504342462, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 1, '0', ''),
-(41, 41, 'asdasd', '', '', '', '', 'aarun31276@gmail.com', '', '', '', '', 0, 'LEFT', 1504342738, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 1, '0', ''),
-(42, 42, 'fhggfhfh', '', '', '', '', 'hfhf@fhfh.v', '', '', '', '', 0, 'LEFT', 1504342806, 0, '0.0000', '10.000', '0.00000', '0.00000', 0, 1, '0', ''),
-(43, 43, '', '', '', '', '', '', '', '', '', '', 0, 'LEFT', 1504343060, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 1, '0', ''),
-(44, 44, '', '', '', '', '', '', '', '', '', '', 0, 'LEFT', 1504343130, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 1, '0', ''),
-(45, 45, '', '', '', '', '', '', '', '', '', '', 0, 'LEFT', 1504343157, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 1, '0', ''),
-(46, 46, 'dgfdsg', '', '', '', '', 'asd@gm.com', '', '', '', '', 0, 'LEFT', 1504363685, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
-(47, 47, 'Arunkumar  qw', '', '', '', '', 'aarun312@gamsk.com', '', '', '', '', 0, 'LEFT', 1504365487, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
-(48, 48, 'a;sdk;l', '', '', '', '', 'arun@gmail.com', '', '', '', '', 0, 'LEFT', 1504503922, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
-(49, 49, 'arunkumar', '', '', '', '', 'arun121@fa.oco', '', '', '', '', 0, 'LEFT', 1504504121, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
 (50, 50, 'arunkumar', '', '', '', '', 'arun121@fa.oco', '', '', '', '', 0, 'LEFT', 1504504257, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
-(51, 51, 'asdasd', '', '', '', '', 'aarun312@gmail1.com', '', '', '', '', 0, 'LEFT', 1504508865, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', '');
+(51, 51, 'asdasd', '', '', '', '', 'aarun312@gmail1.com', '', '', '', '', 0, 'LEFT', 1504508865, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(52, 52, 'asdf', '', '', '', '', 'asdf@adsf.adsf', '', '', '', '', 0, 'LEFT', 1504615267, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(53, 53, 'sadfasdf', '', '', '', '', 'asdf@addsf.asdf', '', '', '', '', 0, 'LEFT', 1504616987, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(54, 54, 'sdf', '', '', '', '', 'sdf@adf.asdf', '', '', '', '', 0, 'LEFT', 1504617901, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(55, 55, 'sdf', '', '', '', '', 'sdf@adf.asdf', '', '', '', '', 0, 'LEFT', 1504617909, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(56, 56, 'sdf', '', '', '', '', 'sdf@adf.asdf', '', '', '', '', 0, 'LEFT', 1504617966, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(57, 57, 'sdf', '', '', '', '', 'sdf@adf.asdf', '', '', '', '', 0, 'LEFT', 1504617990, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(58, 58, 'soundar', '', '', '', '', 'soundear@gmail.com', '', '', '', '', 0, 'LEFT', 1504618017, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(59, 59, 'soundar', '', '', '', '', 'soundear@gmail.com', '', '', '', '', 0, 'LEFT', 1504618033, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(60, 60, 'soundar', '', '', '', '', 'soundear@gmail.com', '', '', '', '', 0, 'LEFT', 1504619167, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(61, 61, 'fff', '', '', '', '', 'sadfasdfsadfsad@afsa', '', '', '', '', 0, 'LEFT', 1504619183, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(62, 62, 'raejsh', '', '', '', '', 'ram@osipa.com', '', '', '', '', 0, 'LEFT', 1504623482, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(63, 63, 'asdfasdfsadf', '', '', '', '', 'sadf@asdf.adsf', '', '', '', '', 0, 'LEFT', 1504623836, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(64, 64, 'fffff', '', '', '', '', 'sadfsadf@asdfsadf.ds', '', '', '', '', 0, 'LEFT', 1504624169, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(65, 65, 'TESST', '', '', '', '', 'test@gmail.com', '', '', '', '', 0, 'LEFT', 1504677193, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(66, 66, '', '', '', '', '', '', '', '', '', '', 0, 'LEFT', 1504699441, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(67, 67, '', '', '', '', '', '', '', '', '', '', 0, 'LEFT', 1504699564, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(68, 68, '', '', '', '', '', '', '', '', '', '', 0, 'LEFT', 1504699619, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(69, 69, '', '', '', '', '', '', '', '', '', '', 0, 'LEFT', 1504699629, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(70, 70, '', '', '', '', '', '', '', '', '', '', 0, 'LEFT', 1504700598, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(71, 71, '', '', '', '', '', '', '', '', '', '', 0, 'LEFT', 1504700853, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(72, 72, '', '', '', '', '', '', '', '', '', '', 0, 'LEFT', 1504700854, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(73, 73, '', '', '', '', '', '', '', '', '', '', 0, 'LEFT', 1504700856, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(74, 74, '', '', '', '', '', '', '', '', '', '', 0, 'LEFT', 1504700880, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', ''),
+(75, 75, 'sadfsdf', '', '', '', '', 'adsfas@asfas.dsafads', '', '', '', '', 0, 'LEFT', 1504700921, 0, '0.0000', '0.000', '0.00000', '0.00000', 0, 0, '0', '');
 
 -- --------------------------------------------------------
 
@@ -383,6 +371,7 @@ CREATE TABLE `user_registration` (
   `placement_id` varchar(50) NOT NULL,
   `placement` enum('LEFT','RIGHT','') NOT NULL,
   `bitcoin_address` varchar(100) NOT NULL,
+  `bitcoin_type` varchar(100) NOT NULL,
   `added_date` int(11) NOT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '0',
   `verified_status` enum('0','1') NOT NULL
@@ -392,27 +381,23 @@ CREATE TABLE `user_registration` (
 -- Dumping data for table `user_registration`
 --
 
-INSERT INTO `user_registration` (`id`, `desired_username`, `your_fullname`, `mobile`, `define_password`, `email_address`, `sponsor`, `placement_id`, `placement`, `bitcoin_address`, `added_date`, `status`, `verified_status`) VALUES
-(1, 'ramesh', 'ramesh.k', 1234412312, '6743b206a69c5959fd1e47098ff64102', 'ram@gmail.com', '', 'test', '', 'afff', 1504205820, 1, '0'),
-(2, 'raj', 'rajesh', 9859785454, '897987987', 'rames@gmail.cads', '', 'radf', '', 'radrads', 1504211874, 1, '0'),
-(3, 'ranjith', 'ranjith', 9566874522, '123123', 'ranjith@gmail.com', '', '12345', 'LEFT', 'test', 1504218270, 1, '0'),
-(9, 'dd', 'dd', 0, 'admin', 'dd@gmail.com', '', 'dd', 'LEFT', 'asdf', 1504218626, 1, '0'),
-(10, 'aravind', 'aravind', 123123, '12', 'aravind@gmail.com', 'ranjith', '12345', 'RIGHT', 'test', 1504218834, 1, '0'),
-(12, 'soundar', 'soundar', 9655454784, '123', 'soundar@gmail.com', '', '123', 'LEFT', '123', 1504265945, 1, '0'),
-(13, 'manoj', 'mano', 965541722, '123', 'ramesh@gmail.com', 'soundar', '1243', 'LEFT', '123', 1504266033, 1, '0'),
-(39, 'vignest', 'vicky', 9655874455, '987', 'vic@gmail.com', 'ramesh', '987', 'LEFT', '987', 1504274070, 1, '0'),
-(40, 'Arun', 'arunkumar', 97459778949, '6743b206a69c5959fd1e47098ff64102', 'aarun312@gmail.com', '', 'arun7393', 'LEFT', '12', 1504342462, 1, '0'),
-(41, 'Arun12', 'asdasd', 99897977, 'asdasda', 'aarun31276@gmail.com', '', 'arun7676', 'RIGHT', '135', 1504342738, 1, '0'),
-(42, 'jfhgf', 'fhggfhfh', 87897897, 'ar', 'hfhf@fhfh.v', '', 'fdgf', 'LEFT', 'fdgf', 1504342806, 1, '0'),
-(43, '', '', 0, '', '', '', '', 'LEFT', '', 1504343060, 1, '0'),
-(44, '', '', 0, '', '', '', '', 'LEFT', '', 1504343130, 1, '0'),
-(45, '', '', 0, '', '', '', '', 'LEFT', '', 1504343156, 1, '0'),
-(46, 'aeyyj', 'dgfdsg', 12345, '12345', 'asd@gm.com', '', 'dfsfs', 'RIGHT', '34', 1504363685, 1, '0'),
-(47, 'ArunAK', 'Arunkumar  qw', 789797897, '6743b206a69c5959fd1e47098ff64102', 'aarun312@gamsk.com', '', 'asdasd', 'RIGHT', 'asd', 1504365487, 1, '0'),
-(48, 'arunlaksjd', 'a;sdk;l', 697978979788, '13557e46d49753d1d41b80444fa043b2', 'arun@gmail.com', '', 'Arun123', 'LEFT', 'aarun', 1504503922, 1, '0'),
-(49, 'Arunkymae', 'arunkumar', 989745454, '6fc42c4388ed6f0c5a91257f096fef3c', 'arun121@fa.oco', '', '456465', 'LEFT', '12', 1504504121, 1, '0'),
-(50, 'Arunkymae', 'arunkumar', 989745454, '4c4711ea06c811b55afe1017dc3f39dc', 'arun121@fa.oco', '', '456465', 'LEFT', '12', 1504504256, 1, '0'),
-(51, 'asdaasdasd', 'asdasd', 878979879879, '7d6246132cd26c1f0dbbf4618dc5e2b1', 'aarun312@gmail1.com', '', 'asdasd', 'LEFT', '12', 1504508865, 1, '0');
+INSERT INTO `user_registration` (`id`, `desired_username`, `your_fullname`, `mobile`, `define_password`, `email_address`, `sponsor`, `placement_id`, `placement`, `bitcoin_address`, `bitcoin_type`, `added_date`, `status`, `verified_status`) VALUES
+(1, 'ramesh', 'ramesh.k', 9597436930, '6743b206a69c5959fd1e47098ff64102', 'ram@gmail.com', '', 'test', '', 'blockchain', 'luno', 1504205820, 0, '1'),
+(2, 'raj', 'rajesh', 9859785454, '897987987', 'rames@gmail.cads', '', 'radf', '', 'radrads', '', 1504211874, 1, '1'),
+(3, 'ranjith', 'ranjith', 9566874522, '123123', 'ranjith@gmail.com', '', '12345', 'LEFT', 'test', '', 1504218270, 1, '1'),
+(9, 'dd', 'dd', 0, 'admin', 'dd@gmail.com', '', 'dd', 'LEFT', 'asdf', '', 1504218626, 1, '1'),
+(10, 'aravind', 'aravind', 123123, '12', 'aravind@gmail.com', 'ranjith', '12345', 'RIGHT', 'test', '', 1504218834, 1, '1'),
+(12, 'soundar', 'soundar', 9655454784, '123', 'soundar@gmail.com', '', '123', 'LEFT', '123', '', 1504265945, 1, '1'),
+(13, 'manoj', 'mano', 965541722, '123', 'ramesh@gmail.com', 'soundar', '1243', 'LEFT', '123', '', 1504266033, 1, '1'),
+(26, 'Arun', 'arunkumar', 97459778949, '6743b206a69c5959fd1e47098ff64102', 'aarun312@gmail.com', '', 'arun7393', 'LEFT', '12', '', 1504342462, 1, '1'),
+(39, 'vignest', 'vicky', 9655874455, '987', 'vic@gmail.com', 'ramesh', '987', 'LEFT', '987', '', 1504274070, 1, '1'),
+(41, 'Arun12', 'asdasd', 99897977, 'asdasda', 'aarun31276@gmail.com', '', 'arun7676', 'RIGHT', '135', '', 1504342738, 1, '1'),
+(52, 'soundardasf', 'asdf', 342, '8d0c8f9d1a9539021fda006427b993b9', 'asdf@adsf.adsf', '', '', '', 'asdf', '', 1504615267, 0, '1'),
+(53, 'adfasdf', 'sadfasdf', 34, '63d0cea9d550e495fde1b81310951bd7', 'asdf@addsf.asdf', '', '', '', 'asdf', '', 1504616986, 0, '1'),
+(54, 'df', 'sdf', 3, 'b41f1d6cd8d2004749a912ba75d88f18', 'sdf@adf.asdf', '', '', '', 'sadf', '', 1504617901, 0, '1'),
+(55, 'df', 'sdf', 3, 'b41f1d6cd8d2004749a912ba75d88f18', 'sdf@adf.asdf', '', '', '', 'sadf', '', 1504617909, 0, '1'),
+(62, 'rajeshss', 'raejsh', 98798798, '14c133708851cf00ecb21f38950370fe', 'ram@osipa.com', '', '', '', 'adsfasdf', '', 1504623482, 0, '1'),
+(63, 'asdfsadfsadfasdfa', 'asdfasdfsadf', 32423423, '5953e1ebb5a153af93da61ea433889d0', 'sadf@asdf.adsf', '', '', '', 'sadfasdf', '', 1504623836, 0, '0');
 
 -- --------------------------------------------------------
 
@@ -433,7 +418,32 @@ CREATE TABLE `user_session` (
 INSERT INTO `user_session` (`user_id`, `hash`, `timestamp`) VALUES
 (4, NULL, 1504226877),
 (12, NULL, 1504265955),
-(1, NULL, 1504535546);
+(1, NULL, 1504710255);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `withdrawal`
+--
+
+CREATE TABLE `withdrawal` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `type` varchar(100) NOT NULL,
+  `description` varchar(100) NOT NULL,
+  `amount` varchar(100) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `added_date` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `withdrawal`
+--
+
+INSERT INTO `withdrawal` (`id`, `user_id`, `type`, `description`, `amount`, `status`, `added_date`) VALUES
+(1, 1, 'blockchain', 'Amount Withdrawal', '0.10006', 'success', 1504693811),
+(2, 1, 'blockchain', 'Amount Withdrawal', '0.10007', 'success', 1504695158),
+(3, 1, 'luno', 'Amount Withdrawal', '0.1', 'success', 1504710926);
 
 --
 -- Indexes for dumped tables
@@ -502,32 +512,6 @@ ALTER TABLE `parent_child_linkage`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `payment_details`
---
-ALTER TABLE `payment_details`
-  ADD PRIMARY KEY (`paymentID`),
-  ADD UNIQUE KEY `key3` (`boxID`,`orderID`,`userID`,`txID`,`amount`,`addr`),
-  ADD KEY `boxID` (`boxID`),
-  ADD KEY `boxType` (`boxType`),
-  ADD KEY `userID` (`userID`),
-  ADD KEY `countryID` (`countryID`),
-  ADD KEY `orderID` (`orderID`),
-  ADD KEY `amount` (`amount`),
-  ADD KEY `amountUSD` (`amountUSD`),
-  ADD KEY `coinLabel` (`coinLabel`),
-  ADD KEY `unrecognised` (`unrecognised`),
-  ADD KEY `addr` (`addr`),
-  ADD KEY `txID` (`txID`),
-  ADD KEY `txDate` (`txDate`),
-  ADD KEY `txConfirmed` (`txConfirmed`),
-  ADD KEY `txCheckDate` (`txCheckDate`),
-  ADD KEY `processed` (`processed`),
-  ADD KEY `processedDate` (`processedDate`),
-  ADD KEY `recordCreated` (`recordCreated`),
-  ADD KEY `key1` (`boxID`,`orderID`),
-  ADD KEY `key2` (`boxID`,`orderID`,`userID`);
-
---
 -- Indexes for table `plan_info`
 --
 ALTER TABLE `plan_info`
@@ -557,6 +541,12 @@ ALTER TABLE `user_registration`
 --
 ALTER TABLE `user_session`
   ADD PRIMARY KEY (`user_id`);
+
+--
+-- Indexes for table `withdrawal`
+--
+ALTER TABLE `withdrawal`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -591,17 +581,12 @@ ALTER TABLE `location`
 -- AUTO_INCREMENT for table `otp`
 --
 ALTER TABLE `otp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `parent_child_linkage`
 --
 ALTER TABLE `parent_child_linkage`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1530;
---
--- AUTO_INCREMENT for table `payment_details`
---
-ALTER TABLE `payment_details`
-  MODIFY `paymentID` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1574;
 --
 -- AUTO_INCREMENT for table `plan_info`
 --
@@ -611,7 +596,7 @@ ALTER TABLE `plan_info`
 -- AUTO_INCREMENT for table `profile_info`
 --
 ALTER TABLE `profile_info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 --
 -- AUTO_INCREMENT for table `relations`
 --
@@ -621,12 +606,17 @@ ALTER TABLE `relations`
 -- AUTO_INCREMENT for table `user_registration`
 --
 ALTER TABLE `user_registration`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 --
 -- AUTO_INCREMENT for table `user_session`
 --
 ALTER TABLE `user_session`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+--
+-- AUTO_INCREMENT for table `withdrawal`
+--
+ALTER TABLE `withdrawal`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

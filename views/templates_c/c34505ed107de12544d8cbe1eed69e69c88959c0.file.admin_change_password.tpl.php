@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2017-09-05 11:11:22
+<?php /* Smarty version Smarty-3.1.16, created on 2017-09-06 18:35:39
          compiled from "\xampp\htdocs\MLM\\views\templates\admin\admin_change_password.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:2046359ae6a0a6bfc66-50627106%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c34505ed107de12544d8cbe1eed69e69c88959c0' => 
     array (
       0 => '\\xampp\\htdocs\\MLM\\\\views\\templates\\admin\\admin_change_password.tpl',
-      1 => 1504602681,
+      1 => 1504715738,
       2 => 'file',
     ),
   ),
@@ -17,6 +17,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'version' => 'Smarty-3.1.16',
   'unifunc' => 'content_59ae6a0a6eea69_79691030',
+  'variables' => 
+  array (
+    'showMsg' => 0,
+  ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_59ae6a0a6eea69_79691030')) {function content_59ae6a0a6eea69_79691030($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ("admin/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
@@ -31,15 +35,14 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Admin Change Password</h2>
-                   
                     <div class="clearfix"></div>
                   </div>
-
                   <div class="x_content" style="background:#F7F7F7; padding-top:50px; padding-bottom:50px">
                   <div class="col-md-1"></div>
                     <div class="col-md-4 col-xs-12 widget widget_tally_box"  >
                         <div class="x_panel ui-ribbon-container fixed_height_390" style="border:1px solid #ccc; ">
-                        
+                        <?php echo $_smarty_tpl->tpl_vars['showMsg']->value;?>
+
                           <div class="x_title" >
                             <h2><b> Change Password</b></h2>
                             <div class="clearfix"></div>
@@ -76,7 +79,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         </div>
                       </div>
 
-               
                   </div>
                 </div>
               </div>

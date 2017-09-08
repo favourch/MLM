@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2017-09-02 10:51:36
+<?php /* Smarty version Smarty-3.1.16, created on 2017-09-07 11:44:51
          compiled from "\xampp\htdocs\MLM\\views\templates\admin\login.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1750059aa71183b3524-21487146%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'd2d3f222597ea1698f84683ae9c628f50de86b3e' => 
     array (
       0 => '\\xampp\\htdocs\\MLM\\\\views\\templates\\admin\\login.tpl',
-      1 => 1504226592,
+      1 => 1504777490,
       2 => 'file',
     ),
   ),
@@ -15,13 +15,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.16',
+  'unifunc' => 'content_59aa71183dceb8_62599052',
   'variables' => 
   array (
     'msg' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.16',
-  'unifunc' => 'content_59aa71183dceb8_62599052',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_59aa71183dceb8_62599052')) {function content_59aa71183dceb8_62599052($_smarty_tpl) {?>
 <!DOCTYPE html>
@@ -62,7 +62,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 
       <div class="form-signin" style="background:rgba(0,0,0,.8) !important;">
     <div class="text-center">
-       <h1 style="color:#FFF"> Admin Login</h1>
+       <h1 style="color:#FFF">  Login</h1>
     </div>
     <hr>
      <?php if ($_smarty_tpl->tpl_vars['msg']->value!='') {?>

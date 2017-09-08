@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2017-09-02 10:47:32
+<?php /* Smarty version Smarty-3.1.16, created on 2017-09-07 15:06:11
          compiled from "\xampp\htdocs\MLM\\views\templates\admin\footer.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:36559aa7024b08941-62297197%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'c0e2e5ec2fd6279553f310cc187c390b84c57811' => 
     array (
       0 => '\\xampp\\htdocs\\MLM\\\\views\\templates\\admin\\footer.tpl',
-      1 => 1504332368,
+      1 => 1504789569,
       2 => 'file',
     ),
   ),
@@ -15,13 +15,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.16',
+  'unifunc' => 'content_59aa7024b0ec25_11472078',
   'variables' => 
   array (
     'admin_arr' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.16',
-  'unifunc' => 'content_59aa7024b0ec25_11472078',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_59aa7024b0ec25_11472078')) {function content_59aa7024b0ec25_11472078($_smarty_tpl) {?>  <!-- footer content -->
         <footer>
@@ -29,7 +29,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <!--Powered by: <a href="http://<?php echo $_smarty_tpl->tpl_vars['admin_arr']->value['website_url'];?>
 "><?php echo $_smarty_tpl->tpl_vars['admin_arr']->value['website_url'];?>
 </a>-->
-            Powered by: <a href="www.brainak.com">Brainak</a>
+            Powered by: <a href="">Brainak</a>
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -95,14 +95,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     
     <!-- Custom Theme Scripts -->
     <script src="js/custom.min.js"></script>
-    
-     
-<!-- Datatables -->
-<script>
- // $(document).ready(function() {
-  //  $('#datatable').dataTable();
- // });
-</script>
 
   </body>
 </html>

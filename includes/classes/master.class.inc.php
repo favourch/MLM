@@ -346,7 +346,7 @@ function regressiveForPlacement($one,&$arr,$placement){
 // Updating the status of the particular profile status and also in the relation table for the parent
 public function updateStatus($payment_id){
 	//$user_id_from_pay =$objCore->DBConn->GetOne("select userID from cryto_payments where paymentID =".$payment_id);
-	
+	//echo $payment_id;die;
 	$sql = "UPDATE profile_info
 	SET account_status = 1
 	WHERE user_id = '".$_SESSION["user_id"]."'";
@@ -361,7 +361,7 @@ public function updateStatus($payment_id){
 	SET status = 1
 	WHERE user_id = '".$_SESSION["user_id"]."'";
 	$this->DBConn->Execute($sql);
-
+	//echo $payment_id;die;
 	$this->updateDepositAmount($payment_id);
 
 
@@ -369,12 +369,18 @@ public function updateStatus($payment_id){
 
 //updating the deposit amount
 public function updateDepositAmount($payment_id){
-	$payment_details = $this->DBConn->GetRow("select * from cryto_payments where paymentID =".$payment_id);
-	$payment_user_id = $payment_details['user_id'];
+	//echo "HI";die;
+	//echo "select * from cryto_payments where paymentID =".$payment_id;
+	$sql = "select * from crypto_payments where paymentID =".$payment_id;
+	//echo $sql;die;
+	$payment_details = $this->DBConn->GetRow($sql);
+	$payment_user_id = $payment_details['userID'];
 	$payment_date = $payment_details['processedDate'];
 	$amount = $payment_details['amount'];
+	//echo $payment_user_id;die;
 
-	$sql = "update profile_info set deposit_amount = deposit_amount + $amount,deposit_date = $payment_date where user_id = payment_user_id and deposit_date < $payment_date ";
+	$sql = "update profile_info set deposit_amount = deposit_amount + $amount,deposit_date = '$payment_date' where user_id = $payment_user_id and deposit_date < '$payment_date' and account_status = 1";
+	//echo $sql;die;
 	$this->DBConn->Execute($sql);
     $this->sponsorBonusCalculator($payment_user_id,$amount);
 
@@ -383,33 +389,50 @@ public function updateDepositAmount($payment_id){
 
 //Sponser Bonus Calculations
 public function sponsorBonusCalculator($child_id,$amount){
-	$sql1= 'select a.deposit_amount as user_deposit_amount ,b.parent_id ,
+	$sql1= 'select a.deposit_amount as user_deposit_amount ,b.sponser_id ,b.parent_id ,
 	(select y.sponsor_bonus  from plan_info y where  
 				y.plan_id = (select plan_id from profile_info x 
-					  where x.user_id = b.parent_id)) as parent_sponsor_bonus
+					  where x.user_id = b.sponser_id)) as parent_sponsor_bonus
 	   from profile_info a,relations b
 		 where a.user_id = b.child_id
 			   and a.user_id = '.$child_id.' and a.account_status = 1 and b.status = 1';
 			   //echo $sql1;die;
     $parentPresent = $this->DBConn->GetArray($sql1);
     $parentPercent = $parentPresent[0]['parent_sponsor_bonus'];
+	$sponser_id = $parentPresent[0]['sponser_id'];
 	$parentId = $parentPresent[0]['parent_id'];
+	
 	//global $childDepositAmount;
 	//if($place == 1){
 		$childDepositAmount = $amount;
+		//echo $amount;
 		
 	//}
+	//echo $parent_id;
      if($parentId){
-		$sponserBonusAmount = round($childDepositAmount*($parentPercent/100),8);
+		 //echo "I";
+		$sponserBonusAmount = round($parentPercent*($childDepositAmount/100),8);
+		//$sponserBonusAmount;die;
+		//echo $parentPercent/100;die;
 		
         $updateSponsorBonus = "UPDATE profile_info
 		SET Total_Amount = Total_Amount + $sponserBonusAmount
-		WHERE user_id = $parentId";
-        $this->DBConn->Execute($updateSponsorBonus,$amount);
-		//$this->sponsorBonusCalculator($parentId,2);
-		$this->AddPlacementAmount($parent_id,$amount);
+		WHERE user_id = $sponser_id";
+		//echo $updateSponsorBonus;die;
+		$this->DBConn->Execute($updateSponsorBonus);
+		
+		$updateBonus_info = "insert into bonus_info set values('','$sponser_id','','SB','$sponserBonusAmount','')";
 
-    }
+		$this->DBConn->Execute($updateBonus_info);
+		
+		//echo $updateBonus_info;die;
+		//$this->sponsorBonusCalculator($parentId,2);
+		
+		$this->AddPlacementAmount($parentId,$amount);
+
+	}
+	
+	header('Location:index.php');
 
 }
 
@@ -418,6 +441,8 @@ public function sponsorBonusCalculator($child_id,$amount){
 //Calculation of placement deposit for the pairing bonus calculations
 
 function AddPlacementAmount($child_id,$amount){
+//echo "HI";die;
+	//echo "HI".$child_id;die;
 	
 	$parent_id =0;
 	$left_bonus = 0;
@@ -425,7 +450,7 @@ function AddPlacementAmount($child_id,$amount){
 	
 	$sql = "select  parent_id , placement
 	 from relations 
-	 where child_id = $child_id";
+	 where child_id = $child_id where status = 1";
 	$values =  $this->DBConn->GetRow($sql);
 
 	$placement = $values['placement'];
@@ -437,16 +462,94 @@ function AddPlacementAmount($child_id,$amount){
 		 }else if($placement == 'RIGHT'){
 			$right_bonus = $amount;
 		 }
-		 
-		 $updateAmount =$this->DBConn->Execute("update profile_info set left_deposite_amt =left_deposite_amt + $left_bonus,
-								  right_deposit_amount =right_deposit_amount + $right_bonus
-			where user_id = ".$parent_id);
+		 $sql2 = "update profile_info set left_deposit_amount =left_deposit_amount + $left_bonus,
+		 right_deposit_amount =right_deposit_amount + $right_bonus
+where user_id = ".$parent_id;
+//echo $sql2;die;
+		 $updateAmount =$this->DBConn->Execute($sql2);
 			$this->AddPlacementAmount($parent_id,$amount);
 	   }
 	   
 	}
 
 
+
+//Display binary tree
+
+function binaryTree($parent_id){
+	$sql = "SELECT A.parent_id,A.child_id,A.placement,B.left_deposit_amount,B.right_deposit_amount,C.desired_username,C.id FROM relations AS A,profile_info AS B,user_registration AS C
+
+WHERE (A.parent_id = $parent_id OR A.child_id = $parent_id) AND (C.id = B.user_id)AND A.child_id = B.user_id ";
+
+
+$details = $this->DBConn->GetArray($sql);
+//print_r($details);
+
+ $content = '';
+$leftChildcontent = "<li id= 'null' class='col-sm-6'><div class = ''><i class='fa fa-user fa-4px' style='font-size:60px;color:#3FA9BD;' aria-hidden='true'></i><br>No one<br>Left :0.0000<br>Right :0.0000</div><ul><li id= 'null' class='col-sm-6' ><div class = ''><i class='fa fa-user fa-4px' style='font-size:60px;color:#3FA9BD;' aria-hidden='true'></i><br>No one<br>Left :0.0000<br>Right :0.0000</div></li><li id= 'null' class='col-sm-6' ><div class = ''><i class='fa fa-user fa-4px' style='font-size:60px;color:#3FA9BD;' aria-hidden='true'></i><br>No one<br>Left :0.0000<br>Right :0.0000</div></li></ul></li>";
+
+$rightChildcontent ="<li id= 'null' class='col-sm-6'><div class = ''><i class='fa fa-user fa-4px' style='font-size:60px;color:#3FA9BD;' aria-hidden='true'></i><br>No one<br>Left :0.0000<br>Right :0.0000</div><ul><li id= 'null' class='col-sm-6' ><div class = ''><i class='fa fa-user fa-4px' style='font-size:60px;color:#3FA9BD;' aria-hidden='true'></i><br>No one<br>Left :0.0000<br>Right :0.0000</div></li><li id= 'null' class='col-sm-6' ><div class = ''><i class='fa fa-user fa-4px' style='font-size:60px;color:#3FA9BD;' aria-hidden='true'></i><br>No one<br>Left :0.0000<br>Right :0.0000</div></li></ul></li>";
+for($i=0;$i<count($details);$i++)
+{
+	//echo $details[$i]['desired_username'];
+	if($details[$i]['child_id'] == $parent_id )  
+	{
+		$content1= "<li id= ".$details[$i]['id']." class='col-sm-12'>Left :".$details[$i]['left_deposit_amount']."<div class = ".$details[$i]['id']."><i class='fa fa-user fa-4px' style='font-size:60px;color:#3FA9BD;' aria-hidden='true'></i><br>".$details[$i]['desired_username']."</div>Right : ".$details[$i]['right_deposit_amount']."";
+		
+	}
+	else if($details[$i]['placement'] == 'LEFT'){
+		$leftChildcontent = "<li id= ".$details[$i]['id']." class='col-sm-6'><div class = ".$details[$i]['id']." onClick ='exTree(".$details[$i]['id'].")'><i class='fa fa-user fa-4px' style='font-size:60px;color:#3FA9BD;' aria-hidden='true'></i><br>".$details[$i]['desired_username']."<br>Left :".$details[$i]['left_deposit_amount']."<br>Right : ".$details[$i]['right_deposit_amount']."</div>";
+	   $leftChildcontent .= $this->binarytreeexpand($details[$i]['id']);
+	   $leftChildcontent .="</li>";
+	}
+	else{
+		$rightChildcontent = "<li id= ".$details[$i]['id']." class='col-sm-6'><div class = ".$details[$i]['id']." onClick ='exTree(".$details[$i]['id'].")'><i class='fa fa-user fa-4px' style='font-size:60px;color:#3FA9BD;' aria-hidden='true'></i><br>".$details[$i]['desired_username']."<br>Left :".$details[$i]['left_deposit_amount']."<br>Right : ".$details[$i]['right_deposit_amount']."</div>";
+		$rightChildcontent .=$this->binarytreeexpand($details[$i]['id']);
+		$rightChildcontent .= "</li>";
+	 }
+}
+//echo $Childcontent;die;
+$content .= "<ul>".$content1."<br> <ul>".$leftChildcontent."". $rightChildcontent."</ul>" ;
+
+$content .= "</li></ul>";
+
+return $content; 
+//return $details;
+
+}
+
+//binary expand tree
+function binarytreeexpand($parent_id){
+	$sql = "SELECT A.parent_id,A.child_id,A.placement,B.left_deposit_amount,B.right_deposit_amount,C.desired_username,C.id FROM relations AS A,profile_info AS B,user_registration AS C
+	
+	WHERE (A.parent_id = $parent_id) AND (C.id = B.user_id)AND A.child_id = B.user_id AND A.status = 1 AND B.account_status = 1";
+	
+	//echo $sql;die;
+	$details = $this->DBConn->GetArray($sql);
+	//echo $sql;
+	//print_r($binaryDetails);
+	//echo json_encode($binaryDetails);
+
+	$content = '';
+	$leftChildcontent = "<li id= 'null' class='col-sm-6'><div class = ''><i class='fa fa-user fa-4px' style='font-size:60px;color:#3FA9BD;' aria-hidden='true'></i><br>No one<br>Left :0.0000<br>Right :0.0000</div></li>";
+	$rightChildcontent ="<li id= 'null' class='col-sm-6'><div class = ''><i class='fa fa-user fa-4px' style='font-size:60px;color:#3FA9BD;' aria-hidden='true'></i><br>No one<br>Left :0.0000<br>Right :0.0000</div></li>";
+	for($i=0;$i<count($details);$i++)
+	{
+		//echo $details[$i]['desired_username'];
+		if($details[$i]['placement'] == 'LEFT'){
+		   $leftChildcontent = "<li id= ".$details[$i]['id']." class='col-sm-6'><div class = ".$details[$i]['id']." onclick='exTree(".$details[$i]['id'].")'><i class='fa fa-user fa-4px' style='font-size:60px;color:#3FA9BD;' aria-hidden='true'></i><br>".$details[$i]['desired_username']."<br>Left :".$details[$i]['left_deposit_amount']."<br>Right : ".$details[$i]['right_deposit_amount']."</div></li>";
+		}
+		else if($details[$i]['placement'] == 'RIGHT'){
+			$rightChildcontent = "<li id= ".$details[$i]['id']." class='col-sm-6'><div class = ".$details[$i]['id']." onclick='exTree(".$details[$i]['id'].")'><i class='fa fa-user fa-4px' style='font-size:60px;color:#3FA9BD;' aria-hidden='true'></i><br>".$details[$i]['desired_username']."<br>Left :".$details[$i]['left_deposit_amount']."<br>Right : ".$details[$i]['right_deposit_amount']."</div></li>";
+		 }
+	}
+	//echo $Childcontent;die;
+	//if($leftChildcontent == '' && $rightChildcontent == ''){
+	$content .= "<ul>".$leftChildcontent." ". $rightChildcontent."</ul>" ;
+	
+	//$content .= "</li></ul>";
+	return $content;
+}
 
 function cricbenchuserlist($recordSet){
 	
@@ -473,15 +576,6 @@ function cricbenchuserlist($recordSet){
 				city					=>	$getplayerdetails[city], 
 				area					=>	$getplayerdetails[area], 
 				division					=>	$getplayerdetails[division], 
-				/*batting_hand_style	=> 	$getplayerdetails[batting_hand_style],
-				bowling_hand_style	=> 	$getplayerdetails[bowling_hand_style],
-				bowling_category_id	=> 	$getplayerdetails[bowling_category_id],
-				slugname			=> 	$getplayerdetails[slugname],
-				profile_photo		=> 	$getplayerdetails[profile_photo],
-				area				=> 	$getplayerdetails[area],
-				highest				=> 	$getplayerdetails[highest],
-				getplayerstatus		=>	$getplayerstatus,
-				getbowlercategory	=>	$getbowlercategory,*/
 			
 				);
 				$recordSet->MoveNext();

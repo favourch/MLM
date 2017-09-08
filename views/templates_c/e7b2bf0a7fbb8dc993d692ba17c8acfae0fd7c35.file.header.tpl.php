@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2017-09-05 12:22:04
+<?php /* Smarty version Smarty-3.1.16, created on 2017-09-07 09:05:43
          compiled from "\xampp\htdocs\MLM\\views\templates\admin\header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1779659aa7024a886c0-10780391%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e7b2bf0a7fbb8dc993d692ba17c8acfae0fd7c35' => 
     array (
       0 => '\\xampp\\htdocs\\MLM\\\\views\\templates\\admin\\header.tpl',
-      1 => 1504606875,
+      1 => 1504767940,
       2 => 'file',
     ),
   ),
@@ -24,6 +24,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'UserName' => 0,
     'admin_id' => 0,
     'last_login' => 0,
+    'GetDownline' => 0,
+    'downline_count' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -110,6 +112,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                       </li>
                       <li><a class="ajax-link" href="package.php"><i class="fa fa-money"></i></i><span>Package</span></a></li>
                       <li><a class="ajax-link" href="user_registration.php"><i class="fa fa-money"></i></i><span>User Registration</span></a></li>
+                       <li><a class="ajax-link" href="admin_direct_referal.php"><i class="fa fa-money"></i></i><span>Direct Referal</span></a></li>
+                        <li><a class="ajax-link" href="roi_setting.php"><i class="fa fa-money"></i></i><span>ROI Setting</span></a></li>
+                        <li><a class="ajax-link" href="admin_binary_match.php"><i class="fa fa-money"></i></i><span>Binary Match</span></a></li>
+                        
                 </ul>
                 <?php } else { ?>
                 
@@ -200,47 +206,25 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 					<li><a href="general-settings.php"><i class="fa fa-cog fa-spin" ></i> General Settings  <span class="badge bg-red pull-right">50%</span></a></li>
                     <li class="divider"></li>
 					<?php }?>
-                    <li><a href="logout.php"><i class="fa fa-sign-out"></i> Log Out &nbsp;&nbsp;&nbsp; <?php if ($_smarty_tpl->tpl_vars['admin_id']->value=='admin') {?><small> <?php echo $_smarty_tpl->tpl_vars['last_login']->value;?>
+                    <li><a href="logout.php"><i class="fa fa-sign-out"></i> Log Out &nbsp;&nbsp;&nbsp;
+                     <?php if ($_smarty_tpl->tpl_vars['admin_id']->value=='admin') {?><small> <?php echo $_smarty_tpl->tpl_vars['last_login']->value;?>
 </small><?php }?></a> </li>
                   </ul>
                 </li>
-
-                <li role="presentation" class="dropdown">
-                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-red">3</span>
-                  </a>
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
-                    <li>
-                      <a>
-                        <span class="image"><img src="img/user.png" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    
-                  </ul>
-                </li>
+			<?php if ($_smarty_tpl->tpl_vars['admin_id']->value!='admin') {?>
                  <li role="presentation" class="dropdown">
                   <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-user" aria-hidden="true"></i>
-                    <span class="badge bg-blue">3</span>
+                    <span class="badge bg-blue"><?php echo $_smarty_tpl->tpl_vars['GetDownline']->value;?>
+</span>
                   </a>
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
                       <a>
                         <span class="image"><img src="img/user.png" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
                         <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
+                          You have <?php echo $_smarty_tpl->tpl_vars['GetDownline']->value;?>
+ Direct Sponsers 
                         </span>
                       </a>
                     </li>
@@ -249,20 +233,23 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                  <li role="presentation" class="dropdown">
                   <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-users" aria-hidden="true"></i>
-                    <span class="badge bg-green">3</span>
+                    <span class="badge bg-green"><?php echo $_smarty_tpl->tpl_vars['downline_count']->value;?>
+</span>
                   </a>
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
                       <a>
                         <span class="image"><img src="img/user.png" alt="Profile Image" /></span>
                         <span class="message">
-                          You have 3 Direct Sponsor
+                          You have <?php echo $_smarty_tpl->tpl_vars['downline_count']->value;?>
+ Downline Users
                         </span>
                       </a>
                     </li>
                    
                   </ul>
                 </li>
+                <?php }?>
               </ul>
             </nav>
           </div>

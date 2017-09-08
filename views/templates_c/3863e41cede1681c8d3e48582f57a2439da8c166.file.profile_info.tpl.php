@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.16, created on 2017-09-02 11:22:27
+<?php /* Smarty version Smarty-3.1.16, created on 2017-09-06 20:16:14
          compiled from "\xampp\htdocs\MLM\\views\templates\admin\profile_info.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:1331959aa78533e5d65-24186272%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '3863e41cede1681c8d3e48582f57a2439da8c166' => 
     array (
       0 => '\\xampp\\htdocs\\MLM\\\\views\\templates\\admin\\profile_info.tpl',
-      1 => 1504335579,
+      1 => 1504721502,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.16',
+  'unifunc' => 'content_59aa7853434884_98833309',
   'variables' => 
   array (
     'displayMsg' => 0,
@@ -25,10 +27,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'GetDetails_Qry' => 0,
     'GENDER' => 0,
     'NATIONALITY' => 0,
+    'PLACEMENT' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.16',
-  'unifunc' => 'content_59aa7853434884_98833309',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_59aa7853434884_98833309')) {function content_59aa7853434884_98833309($_smarty_tpl) {?><?php if (!is_callable('smarty_function_html_options')) include 'C:\\xampp\\htdocs\\MLM\\libs\\plugins\\function.html_options.php';
 ?> <?php echo $_smarty_tpl->getSubTemplate ("admin/header.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
@@ -106,7 +107,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                            </div>
                            <div class="form-group  col-md-4">
                                 <label for="exampleInputEmail1">Email <span class="red">*</span></label>
-                                <input type="email" class="form-control" name="email" required="required"  id="email" value="<?php echo $_smarty_tpl->tpl_vars['GetDetails_Qry']->value['email'];?>
+                                <input type="email" class="form-control" name="email" required="required"  readonly="readonly" id="email" value="<?php echo $_smarty_tpl->tpl_vars['GetDetails_Qry']->value['email'];?>
 ">
                            </div>
                            
@@ -136,9 +137,20 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                            </div>
                            <div class="form-group  col-md-4">
                                 <label for="exampleInputEmail1">Postal Code </label>
-                                <input type="text" class="form-control" name="postal_code" id="postal_code" value="<?php echo $_smarty_tpl->tpl_vars['GetDetails_Qry']->value['postal_code'];?>
+                                <input type="text" class="form-control" name="postal_code" id="postal_code"  value="<?php echo $_smarty_tpl->tpl_vars['GetDetails_Qry']->value['postal_code'];?>
 ">
                            </div>
+                           
+                           <div class="form-group  col-md-4">
+                                <label for="exampleInputEmail1">Postal Code </label>
+                                 <select class="form-control" name="placement" required="required">
+                                 	<option value="">----- SELECT -----</option>
+                                    <?php ob_start();?><?php echo $_smarty_tpl->tpl_vars['GetDetails_Qry']->value['required_placement'];?>
+<?php $_tmp3=ob_get_clean();?><?php echo smarty_function_html_options(array('options'=>$_smarty_tpl->tpl_vars['PLACEMENT']->value,'selected'=>$_tmp3),$_smarty_tpl);?>
+
+                                </select>
+                           </div>
+                           
                         </div>
                              <div class="clearfix"></div>
                                 
@@ -150,6 +162,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                         </form>
                   </div>
                 </div>
+          </div>
           </div>
 
         <!-- /page content -->

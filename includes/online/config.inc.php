@@ -14,12 +14,14 @@ define('DIR_IMAGES',     			'images/');
 
 //BASEDIR variable used to include and require files.
 //define('BASEDIR',                   getcwd() . DIRECTORY_SEPARATOR);
-define('BASEDIR',                   '/var/sentora/hostdata/brainak/public_html/'. DIRECTORY_SEPARATOR);
+//define('BASEDIR',                   '/xampp/htdocs/MLM/'. DIRECTORY_SEPARATOR);
+define('BASEDIR',                   '/home/newbranding/public_html/MLM/'. DIRECTORY_SEPARATOR);
 define('CUR',                   'INR ');
 
 #========= Website Root & HTTP Paths ============#
-define("ROOT_PATH", "/var/sentora/hostdata/brainak/public_html/");
-define("HTTP_PATH", "http://brainak.com/");
+
+define("ROOT_PATH", "/home/newbranding/public_html/MLM/");
+define("HTTP_PATH", "http://www.newbranding.in/MLM/");
 #========= Website Root & HTTP Paths ============#
 
 define('DIR_PLUGINS',               BASEDIR . 'libs' . DIRECTORY_SEPARATOR);
@@ -36,23 +38,17 @@ define('DIR_VIEWS_CACHE',          BASEDIR . 'views'  . DIRECTORY_SEPARATOR . 'c
 
 
 #========= Database Connection ========#
-//define("DATABASE_TYPE", "MySQLi");
-//define("DATABASE_SERVER","localhost");
-//define("DATABASE_USER","root");
-//define("DATABASE_PASS","");
-//define("DATABASE_NAME","financedb");
+
 define("DATABASE_TYPE", "MySQLi");
 define("DATABASE_SERVER","localhost");
-define("DATABASE_USER","finzzon");
-define("DATABASE_PASS","zyzepubus");
-define("DATABASE_NAME","brainak_financedb");
-
+define("DATABASE_USER","newbrand_mlm");
+define("DATABASE_PASS","mlm_123456");
+define("DATABASE_NAME","newbrand_mlmnew");
 #========= Database Connection ========#
 
 
-define('profile_upload_path',          ROOT_PATH . 'img/profile/');
-define('profile_display_path',         HTTP_PATH . 'img/profile/');
-
+define('profile_upload_path',          ROOT_PATH . 'images/profile/');
+define('profile_display_path',         HTTP_PATH . 'images/profile/');
 
 
 
@@ -61,6 +57,3 @@ include_once BASEDIR ."includes". DIRECTORY_SEPARATOR ."arrays.php";
 //Loads the query file
 require_once(DIR_QRY . 'sql-query.php');
 ?>
-
-
-
