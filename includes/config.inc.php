@@ -14,7 +14,8 @@ define('DIR_IMAGES',     			'images/');
 
 //BASEDIR variable used to include and require files.
 //define('BASEDIR',                   getcwd() . DIRECTORY_SEPARATOR);
-define('BASEDIR',                   '/xampp/htdocs/MLM/'. DIRECTORY_SEPARATOR);
+//define('BASEDIR',                   '/xampp/htdocs/MLM/'. DIRECTORY_SEPARATOR);
+define('BASEDIR',                   '/'. DIRECTORY_SEPARATOR);
 define('CUR',                   'INR ');
 
 #========= Website Root & HTTP Paths ============#
@@ -37,10 +38,10 @@ define('DIR_VIEWS_CACHE',          BASEDIR . 'views'  . DIRECTORY_SEPARATOR . 'c
 
 #========= Database Connection ========#
 define("DATABASE_TYPE", "MySQLi");
-define("DATABASE_SERVER","localhost");
-define("DATABASE_USER","root");
-define("DATABASE_PASS","");
-define("DATABASE_NAME","mlmnew");
+define("DATABASE_SERVER","us-cdbr-iron-east-02.cleardb.net");
+define("DATABASE_USER","b912d47e141251");
+define("DATABASE_PASS","ca7e25db");
+define("DATABASE_NAME","heroku_2022db028c76541");
 #========= Database Connection ========#
 
 
