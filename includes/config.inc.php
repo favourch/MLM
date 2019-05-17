@@ -15,11 +15,11 @@ define('DIR_IMAGES',     			'images/');
 //BASEDIR variable used to include and require files.
 //define('BASEDIR',                   getcwd() . DIRECTORY_SEPARATOR);
 //define('BASEDIR',                   '/xampp/htdocs/MLM/'. DIRECTORY_SEPARATOR);
-define('BASEDIR',                   ''. DIRECTORY_SEPARATOR);
+define('BASEDIR',                   './?'. DIRECTORY_SEPARATOR);
 define('CUR',                   'INR ');
 
 #========= Website Root & HTTP Paths ============#
-define("ROOT_PATH", "");
+define("ROOT_PATH", "https://ectonmlm.herokuapp.com/");
 define("HTTP_PATH", "https://ectonmlm.herokuapp.com/");
 #========= Website Root & HTTP Paths ============#
 
