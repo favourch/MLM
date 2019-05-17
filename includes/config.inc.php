@@ -3,7 +3,7 @@
 ini_set("allow_call_time_pass_reference", "true");
 
 //error_reporting( E_ALL ^ E_DEPRECATED );
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
 
 Error_Reporting(~E_NOTICE);
 
